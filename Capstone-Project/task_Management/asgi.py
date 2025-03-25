@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Task_Management.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'task_Management.settings')
 
 application = get_asgi_application()
