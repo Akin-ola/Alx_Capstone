@@ -23,3 +23,20 @@ class Technician(models.Model):
     def __str__(self):
         return f"{self.name}"
     
+category = {
+    'periodic': 'Periodic',
+    'preventive': 'preventive',
+    'category A': 'Category A',
+    'category B': 'Category B',
+    'category C': 'Category C',
+    'category D': 'Category D'
+}
+class Maintenance(models.Model):
+    equipment_name = models.ForeignKey(Equipment.name, on_delete=models.PROTECT, related_name='task_record')
+    equipment_serial_no = models.ForeignKey(Equipment.serial_no, on_delete=models.PROTECT, related_name='task_record')
+    technician = models.ForeignKey(Technician, on_delete=models.PROTECT, related_name='task_record')
+    category = models.CharField(max_length=50, choices=category, blank=False)
+    task_desc = models.CharField(max_length=255, blank=False)
+    task_date = models.DateField(auto_now_add=True, blank=False)
+    remarks = models.CharField(max_length=255, blank=False)
+    
